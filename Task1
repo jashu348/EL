@@ -1,0 +1,91 @@
+import java.util.Scanner;
+
+// Calculator class with methods for operations
+class Calculator {
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    public double subtract(double a, double b) {
+        return a - b;
+    }
+
+    public double multiply(double a, double b) {
+        return a * b;
+    }
+
+    public double divide(double a, double b) {
+        if (b == 0) {
+            throw new ArithmeticException("Division by zero is not allowed!");
+        }
+        return a / b;
+    }
+}
+
+// Main class
+public class CalculatorApp {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Calculator calc = new Calculator();
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\n--- Simple Calculator ---");
+            System.out.println("1. Addition");
+            System.out.println("2. Subtraction");
+            System.out.println("3. Multiplication");
+            System.out.println("4. Division");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice (1-5): ");
+            
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter first number: ");
+                    double a1 = sc.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double b1 = sc.nextDouble();
+                    System.out.println("Result: " + calc.add(a1, b1));
+                    break;
+
+                case 2:
+                    System.out.print("Enter first number: ");
+                    double a2 = sc.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double b2 = sc.nextDouble();
+                    System.out.println("Result: " + calc.subtract(a2, b2));
+                    break;
+
+                case 3:
+                    System.out.print("Enter first number: ");
+                    double a3 = sc.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double b3 = sc.nextDouble();
+                    System.out.println("Result: " + calc.multiply(a3, b3));
+                    break;
+
+                case 4:
+                    System.out.print("Enter first number: ");
+                    double a4 = sc.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double b4 = sc.nextDouble();
+                    try {
+                        System.out.println("Result: " + calc.divide(a4, b4));
+                    } catch (ArithmeticException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
+
+                case 5:
+                    running = false;
+                    System.out.println("Exiting... Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Please select between 1-5.");
+            }
+        }
+        sc.close();
+    }
+}
